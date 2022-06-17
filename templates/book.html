@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div>
+    <div>
+        <h1>{{book.title}}</h1>
+    </div>
+    <div class="book_info">
+        <div id="book_info_text">
+            <p><b>Author: </b> {{book.author}}</p>
+            <p><b>Year: </b> {{book.year}}</p>
+            <p><b>Publisher: </b> {{book.publisher}}</p>
+            <p><b>ISBN: </b> {{book.isbn}}</p>
+            {% if rating != "-1" %}
+            <p><b>Average rating from {{count}} reviews: </b> {{rating}}/10</p>
+            {% endif %}
+        </div>
+        <div>
+            <img id="book_big_img" src="{{book.img}}" alt=" image">
+        </div>
+    </div>
+</div>
+{% if recommended_books|length >0 %}
+<div>
+    <h2>Readers of this book also like:</h2>
+    <div id="book_items">
+        {%for recommended_book in recommended_books%}
+
+        <div class="recommended_book_item" style="cursor: pointer;"
+            onclick="window.location.href='{{ url_for('book', book_id=recommended_book.book_id)}}';">
+
+            <h3>{{recommended_book.title}}</h3>
+
+            <img class="recommended_book_img" src="{{recommended_book.img}}" alt=" image">
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+
+<body class="indexpage">
+    <div class="search_index">
+        <h1>Book recommender</h1>
+        <form action="{{ url_for('search') }}" method="post">
+            <label for="title">
+                <i class="fas fa-book"></i>
+            </label>
+            <input type="text" name="title" placeholder="Book title" id="title" required>
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</body>
+
+</html>
